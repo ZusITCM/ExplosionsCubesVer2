@@ -5,25 +5,27 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Cube cube;
 
+    [SerializeField] private int _minCloneCount = 2;
+    [SerializeField] private int _maxCloneCount = 6;
+
     private readonly int _chanceDevider = 2;
 
-    public List<Cube> Spawn(Cube cube)
+    public List<Rigidbody> Spawn(Cube cube)
     {
-        int cloneChance = Random.Range(cube.MinimumChance, cube.MaximumChance + 1);
-        int cloneCount = Random.Range(cube.MaxCloneCount, cube.MinCloneCount + 1);
+        int cloneCount = Random.Range(_minCloneCount, _maxCloneCount + 1);
 
-        List<Cube> cubeClones = new();
+        List<Rigidbody> cubeClones = new();
 
-        if (cloneChance <= cube.DevideÑhance)
+        if (cube.IsDevide())
         {
             for (int i = 0; i < cloneCount; i++)
             {
                 Cube cubeClone = Instantiate(cube);
 
-                cubeClone.DevideÑhance /= _chanceDevider;
+                cubeClone.DevideChance /= _chanceDevider;
                 cubeClone.transform.localScale = cubeClone.transform.localScale - cubeClone.ScaleReduction;
 
-                cubeClones.Add(cubeClone);
+                cubeClones.Add(cubeClone.GetComponent<Rigidbody>());
             }
         }
 
