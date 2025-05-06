@@ -294,6 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cube: {fileID: 1421143642}
+  _minCloneCount: 2
+  _maxCloneCount: 6
 --- !u!4 &109211262
 Transform:
   m_ObjectHideFlags: 0
@@ -567,7 +569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbcba8e92343ec46b8057973a4586e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubeClickHandler: {fileID: 767026642}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +807,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 767026643}
-  - component: {fileID: 767026642}
+  - component: {fileID: 767026644}
+  - component: {fileID: 767026646}
+  - component: {fileID: 767026645}
   m_Layer: 0
   m_Name: Replicator
   m_TagString: Untagged
@@ -814,20 +817,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &767026642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767026641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c486a653f47772046bdca7d1d013af59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawner: {fileID: 109211261}
-  _exploder: {fileID: 1227524375}
 --- !u!4 &767026643
 Transform:
   m_ObjectHideFlags: 0
@@ -845,6 +834,50 @@ Transform:
   - {fileID: 1227524376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &767026644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767026641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf2ca91338f93f4db32a22d34a33230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 109211261}
+  _exploder: {fileID: 1227524375}
+  _raycaster: {fileID: 330585548}
+--- !u!114 &767026645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767026641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ab4fda6a8eaf243a8450e3b819727b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explodeRadius: 5
+  _explodeForce: 100
+--- !u!114 &767026646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767026641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a74c44e410c3254a98d5cab243091ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube: {fileID: 1421143642}
+  _minCloneCount: 2
+  _maxCloneCount: 6
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,8 +1206,6 @@ MonoBehaviour:
   _devideChance: 100
   _maximumChance: 100
   _minimumChance: 0
-  _minCloneCount: 2
-  _maxCloneCount: 6
   _scaleReduction: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!54 &1365843558
 Rigidbody:
@@ -1328,8 +1359,6 @@ MonoBehaviour:
   _devideChance: 100
   _maximumChance: 100
   _minimumChance: 0
-  _minCloneCount: 2
-  _maxCloneCount: 6
   _scaleReduction: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!54 &1421143643
 Rigidbody:
