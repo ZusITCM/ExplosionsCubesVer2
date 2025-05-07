@@ -7,7 +7,7 @@ public class Raycaster : MonoBehaviour
 
     private readonly int _mouseButtonNumber = 0;
 
-    public event Action<Cube> CubeClick;
+    public event Action<Cube> CubeClicked;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class Raycaster : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit))
                 if (hit.collider.TryGetComponent(out Cube cube))
-                    CubeClick(cube);
+                    CubeClicked(cube);
         }
     }
 }

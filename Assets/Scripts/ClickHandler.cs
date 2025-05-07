@@ -13,12 +13,12 @@ public class ClickHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _raycaster.CubeClick += TryDevide;
+        _raycaster.CubeClicked += TryDevide;
     }
 
     private void OnDisable()
     {
-        _raycaster.CubeClick -= TryDevide;
+        _raycaster.CubeClicked -= TryDevide;
     }
 
     public void TryDevide(Cube cube)
@@ -31,7 +31,7 @@ public class ClickHandler : MonoBehaviour
             _exploder.Explode(cube);
 
         if (rigidbodies.Count > 0)
-            _exploder.Explode(rigidbodies);
+            _exploder.Explode(rigidbodies, cube.transform.position);
 
         cube.Destroy();
     }

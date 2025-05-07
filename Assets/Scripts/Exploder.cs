@@ -9,16 +9,12 @@ public class Exploder : MonoBehaviour
     private readonly float _maxForce = 1000f;
     private readonly float _maxRadius = 50f;
 
-    public void Explode(List<Rigidbody> explodableRigidbodies)
+    public void Explode(List<Rigidbody> explodableRigidbodies, Vector3 explodePosition)
     {
         foreach (Rigidbody explodableRigidbody in explodableRigidbodies)
         {
             if (explodableRigidbody != null)
-            {
-                Vector3 explosionDirection = (explodableRigidbody.transform.position - transform.position).normalized;
-
-                explodableRigidbody.AddForce(explosionDirection * _explodeForce, ForceMode.Impulse);
-            }
+                explodableRigidbody.AddExplosionForce(_explodeForce, explodePosition, _explodeRadius);
         }
     }
 
